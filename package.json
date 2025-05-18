@@ -1,0 +1,15 @@
+{
+  "name": "backmary",
+  "version": "1.0.0",
+  "description": "This is a test for Mary Technology",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Juan Faneite",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
