@@ -2,11 +2,12 @@ const express = require("express");
 const app = express();
 const http = require("http");
 require("dotenv").config();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3100;
 const WebSocket = require("ws");
+const cors = require("cors");
 
 const documentRoutes = require("./src/routes/document.routes");
-
+app.use(cors());
 app.use(express.json());
 app.use(documentRoutes);
 
