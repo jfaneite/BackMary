@@ -1,20 +1,33 @@
 const { streamDocuments } = require("../repositories/document.repository");
-const { sendToChatGPT } = require("./chatgpt.service");
+const { getHighlights, streamSummary } = require("./chatgpt.service");
 
-async function processDocumentsWithChatGPT(ws) {
+async function getHighlightsWithChatGPT(ws) {
+  const summaries = [];
+
   for await (const doc of streamDocuments()) {
-    const result = await sendToChatGPT(doc);
+    const result = await getHighlights(doc);
+    summaries.push({ doc_id: doc.doc_id, result });
+
     ws.send(
       JSON.stringify({
-        doc_id: doc.doc_id,
-        response: result,
+        type: "highlights",
+        content: {
+          doc_id: doc.doc_id,
+          response: result,
+        },
       }),
     );
   }
+
+  const finalSummary = await streamSummary(summaries);
+
+  ws.send(
+    JSON.stringify({ type: "global_summary_done", content: finalSummary }),
+  );
 
   ws.send(JSON.stringify({ done: true }));
 }
 
 module.exports = {
-  processDocumentsWithChatGPT,
+  processDocumentsWithChatGPT: getHighlightsWithChatGPT,
 };
