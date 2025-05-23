@@ -51,17 +51,19 @@ npm test
 
 ### Folder structure
 
+```text
 src/
-├─ controllers/ # REST & WebSocket handlers
-│ └─ _tests_/
-├─ repositories/ # Data-access logic
-│ └─ _tests_/
-├─ routes/ # Express route definitions
-│ └─ _tests_/
-├─ services/ # Business logic
-│ └─ _tests_/
-└─ utils/ # Helper functions
-└─ _tests_/
+├─ controllers/      # REST & WebSocket handlers
+│  └─ __tests__/
+├─ repositories/     # Data-access logic
+│  └─ __tests__/
+├─ routes/           # Express route definitions
+│  └─ __tests__/
+├─ services/         # Business logic
+│  └─ __tests__/
+└─ utils/            # Helper functions
+   └─ __tests__/
+```
 
 ---
 
@@ -112,4 +114,3 @@ _(Sanitising the file and ordering its content boosts performance while reducing
 10. In a real project, this design would evolve over weeks or months with cross-team collaboration.
 
 ---
-
