@@ -2,10 +2,12 @@
   "name": "backmary",
   "version": "1.0.0",
   "description": "This is a test for Mary Technology",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "dev": "ts-node index.ts",
+    "build": "tsc && cp json-file-tech-test.json dist/",
+    "start": "node dist/index.js",
+    "test": "jest"
   },
   "author": "Juan Faneite",
   "license": "ISC",
@@ -13,8 +15,22 @@
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "gpt-3-encoder": "^1.1.4",
     "openai": "^4.100.0",
     "stream-json": "^1.9.1",
+    "supertest": "^7.1.1",
     "ws": "^8.18.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.18",
+    "@types/express": "^5.0.2",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.15.21",
+    "@types/supertest": "^6.0.3",
+    "@types/ws": "^8.18.1",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.3.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }
